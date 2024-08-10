@@ -16,16 +16,13 @@ document.addEventListener('keydown', function(event) {
                 "|": "|",
            };
     if (Object.keys(punctuationMarks).includes(event.key)) {
-      event.preventDefault();
       const activeElement = document.activeElement;
-      
       // Ensure the active element is a text area or input
-      if (activeElement.tagName === 'TEXTAREA' || (activeElement.tagName === 'INPUT' && activeElement.type === 'text')) {
-        // Get the selection range
+      if (activeElement && (activeElement.tagName === 'TEXTAREA' || (activeElement.tagName === 'INPUT' && activeElement.type === 'text'))) {
         const selectionStart = activeElement.selectionStart;
         const selectionEnd = activeElement.selectionEnd;
-        
         if (selectionStart !== selectionEnd) {
+          event.preventDefault();
           const selectedText = activeElement.value.substring(selectionStart, selectionEnd);
           const wrappedText = event.key + selectedText + punctuationMarks[event.key];
           activeElement.value = activeElement.value.substring(0, selectionStart) +
