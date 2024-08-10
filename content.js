@@ -7,6 +7,13 @@ document.addEventListener('keydown', function(event) {
                '(' : ')',                
                '[' : ']', 
                '{' : '}', 
+               "`": "`",
+                '<': '>',
+                '«': '»',
+                '„': '“',
+                '“': '”',
+                '‘': '’',
+                "|": "|",
            };
     if (Object.keys(punctuationMarks).includes(event.key)) {
       event.preventDefault();
