@@ -11,7 +11,18 @@
         "matches": ["<all_urls>"],
         "js": ["content.js"],
         "run_at": "document_end"
+        },
+        {
+            "matches": ["https://docs.google.com/*"],
+            "js": ["content.js"],
+            "run_at": "document_end"
+        }, 
+        {
+            "matches": ["https://docs.google.com/document/d/*", "https://www.gstatic.com/*"],
+            "js": ["content.js"],
+            "run_at": "document_end"
         }
+
     ],
     "permissions": ["scripting", "activeTab"]
   }
