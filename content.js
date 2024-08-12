@@ -27,18 +27,6 @@ const lazyPunctuationMarks = {
  };
 
 
-
-// function addKeydownListenerToIframe(iframe) {
-//     iframe.contentWindow.document.addEventListener('keydown', (event) => {
-//         wrapSelectedText(event)
-//     })
-// }
-// window.addEventListener('load', () => {
-//     const iframes = document.querySelectorAll('iframe');
-//     iframes.forEach(addKeydownListenerToIframe)
-// })
-
-
 document.addEventListener('keydown', function(event) {
     wrapSelectedText(event)
 });
@@ -61,15 +49,15 @@ function wrapSelectedText(event){
                       : lazyPunctuationMarks[key] 
                         ? lazyPunctuationMarks[key] + selectedText + key
                         : selectedText;                
-                console.log(activeElement.value);        
                 activeElement.value = activeElement.value.substring(0, selectionStart) +
                                     wrappedText +
                                     activeElement.value.substring(selectionEnd);
-                console.log(activeElement.value);        
+                
                 // Set the new cursor position
                 activeElement.selectionStart = selectionEnd + 2; 
                 activeElement.selectionEnd = selectionEnd + 2; 
                 
+                // Trigger the input event to update the area 
                 const new_event = new Event('input', { bubbles: true });
                 activeElement.dispatchEvent(new_event);
             }
