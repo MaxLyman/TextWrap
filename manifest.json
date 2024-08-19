@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "TextWrap",
+    "version": "1.0.1",
+    "description": "Extension to wrap highlighted text in puncuations similar to code editors",
+    "icons": {
+        "128": "src/128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["src/content.js"],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+    ]
+  }
